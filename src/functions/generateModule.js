@@ -1,7 +1,7 @@
 const path = require("path");
 const moduleFolders = require("../consts/moduleFolders");
-const createFolderInPath = require("../helpers/createFolderInPath");
-const createFileInPath = require("../helpers/createFileInPath");
+const createFolderInPath = require("../helpers/createFolder");
+const createFileInPath = require("../helpers/createFile");
 const chalk = require("chalk");
 
 const generateModule = async (name, modulesPath) => {

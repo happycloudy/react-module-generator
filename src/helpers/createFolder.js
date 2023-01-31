@@ -3,7 +3,7 @@ const fsSync = require("fs");
 const fs = require("fs/promises");
 const chalk = require("chalk");
 
-const createFolderInPath = async (folder, modulesPath) => {
+const createFolder = async (folder, modulesPath) => {
   const fullPath = path.resolve(modulesPath, folder)
   const isExists = fsSync.existsSync(fullPath)
 
@@ -16,4 +16,4 @@ const createFolderInPath = async (folder, modulesPath) => {
   console.log(`Folder ${chalk.green(folder)} created`)
 }
 
-module.exports = createFolderInPath
+module.exports = createFolder
