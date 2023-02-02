@@ -9,9 +9,11 @@ const readCommand = () => {
     return {}
   }
 
+  const [operation, ...parameters] = command
+
   return {
-    operation: command[0],
-    parameter: command[1],
+    operation: operation,
+    parameter: parameters,
   }
 }
 
