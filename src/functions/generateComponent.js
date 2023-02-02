@@ -21,7 +21,7 @@ const generateComponent = async (module, name, modulesPath) => {
   const componentPath = path.resolve(modulePath, 'components', componentName)
 
   await createFolder(componentName, componentFolderPath)
-  await createFile(`${componentName}.js`, componentPath, templates.component(componentName))
+  await createFile(`${componentName}.ts`, componentPath, templates.component(componentName))
 }
 
 module.exports = generateComponent
