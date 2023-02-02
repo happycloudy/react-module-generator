@@ -1,7 +1,8 @@
 {
   "scripts": {
     "moduleTest": "node src/app.js module example",
-    "componentTest": "node src/app.js component example header main"
+    "componentTest": "node src/app.js component example header main",
+    "importTest": "node src/app.js import example header main"
   },
   "name": "ts_module_generator",
   "packageManager": "yarn@3.2.4",
