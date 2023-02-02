@@ -1,10 +1,11 @@
 const path = require("path");
-const fs = require("fs/promises");
 const fsSync = require("fs");
 const generateModule = require("./generateModule");
 const templates = require("../consts/templates");
 const chalk = require("chalk");
 const flToUpperCase = require("../helpers/flToUpperCase");
+const createFile = require("../helpers/createFile");
+const createFolder = require("../helpers/createFolder");
 
 const generateComponent = async (module, name, modulesPath) => {
   const modulePath = path.resolve(modulesPath, module)
@@ -16,11 +17,11 @@ const generateComponent = async (module, name, modulesPath) => {
   }
 
   const componentName = flToUpperCase(name)
-  const componentFolderPath = path.resolve(modulePath, 'components', `${componentName}`)
-  const componentPath = path.resolve(modulePath, 'components', componentName,`${componentName}.js`)
+  const componentFolderPath = path.resolve(modulePath, 'components')
+  const componentPath = path.resolve(modulePath, 'components', componentName)
 
-  await fs.mkdir(componentFolderPath)
-  await fs.writeFile(componentPath, templates.component(componentName))
+  await createFolder(componentName, componentFolderPath)
+  await createFile(`${componentName}.js`, componentPath, templates.component(componentName))
 }
 
 module.exports = generateComponent

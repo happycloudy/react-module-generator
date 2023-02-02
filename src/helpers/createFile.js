@@ -3,8 +3,8 @@ const fsSync = require("fs");
 const path = require("path");
 const chalk = require("chalk");
 
-const createFile = async (file, modulePath) => {
-  const filePath = path.resolve(modulePath, file)
+const createFile = async (file, folderPath, data = '') => {
+  const filePath = path.resolve(folderPath, file)
   const isExists = fsSync.existsSync(filePath)
 
   if(isExists) {
@@ -12,7 +12,7 @@ const createFile = async (file, modulePath) => {
     return
   }
 
-  await fs.appendFile(filePath, '')
+  await fs.appendFile(filePath, data)
   console.log(`File ${chalk.green(file)} created`)
 }
 
