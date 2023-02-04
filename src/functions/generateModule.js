@@ -3,9 +3,11 @@ const moduleFolders = require("../consts/moduleFolders");
 const createFolderInPath = require("../helpers/createFolder");
 const createFileInPath = require("../helpers/createFile");
 const chalk = require("chalk");
+const generateComponent = require("./generateComponent");
+const flToUpperCase = require("../helpers/flToUpperCase");
 
 const generateModule = async (name, modulesPath) => {
-  name = name.toLowerCase()
+  name = flToUpperCase(name)
 
   const moduleFolder = path.resolve(modulesPath, name)
 
@@ -15,6 +17,7 @@ const generateModule = async (name, modulesPath) => {
   }
 
   await createFileInPath('index.ts', moduleFolder)
+  await generateComponent(name, name, modulesPath)
 
   console.log(`\nModule ${chalk.green(name)} created\n`)
 }
