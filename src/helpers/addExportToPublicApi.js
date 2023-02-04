@@ -21,8 +21,18 @@ const addExportToPublicApi = async (modulePath, componentName) => {
   })
 
 
-  const isExist = importedComponents.find(component => component.componentName === componentName)
-  if(!isExist) {
+  const componentFolderPath = path.resolve(modulePath, 'components')
+  const componentsFolders = await fs.readdir(componentFolderPath)
+  const isComponentExists = !!componentsFolders.find(folderName => folderName === componentName)
+
+  if(!isComponentExists) {
+    console.log(`${chalk.green(componentName)} doesn't exist`)
+    return
+  }
+
+
+  const isExistInPublicApi = importedComponents.find(component => component.componentName === componentName)
+  if(!isExistInPublicApi) {
     await fs.appendFile(publicApiPath, exportString)
     console.log(`${chalk.green(componentName)} was added to ${chalk.blue('index file')}`)
   } else {
