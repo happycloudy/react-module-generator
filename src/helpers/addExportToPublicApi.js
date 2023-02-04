@@ -1,10 +1,12 @@
 const path = require('path')
 const fs = require('fs/promises')
 const chalk = require("chalk");
+const flToUpperCase = require("./flToUpperCase");
 
 const createExportString = (componentName) => `export { ${componentName} } from './components/${componentName}'\n`
 
 const addExportToPublicApi = async (modulePath, componentName) => {
+  componentName = flToUpperCase(componentName)
   const publicApiPath = path.resolve(modulePath, 'index.ts')
   const exportString = createExportString(componentName)
 
