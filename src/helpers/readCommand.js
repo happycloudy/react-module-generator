@@ -5,15 +5,17 @@ const readCommand = () => {
   const isOperationValid = !!operations.find(validOperation => validOperation === command[0])
 
   if(!isOperationValid) {
-    console.log("Operation doesn't exists")
-    return {}
+    return {
+      operation: '',
+      parameter: []
+    }
   }
 
   const [operation, ...parameters] = command
 
   return {
-    operation: operation,
-    parameter: parameters,
+    operation: operation || '',
+    parameter: parameters || [],
   }
 }
 

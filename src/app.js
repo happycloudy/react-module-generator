@@ -3,6 +3,8 @@ const generateModule = require("./functions/generateModule");
 const generateComponent = require("./functions/generateComponent");
 const readCommand = require("./helpers/readCommand");
 const importComponents = require("./functions/importComponents");
+const chalk = require("chalk");
+const help = require("./consts/help");
 
 const app = () => {
   const command = readCommand()
@@ -23,8 +25,11 @@ const app = () => {
         importComponents(module, component, modulesPath)
       }
       break
+    case 'help':
+      console.log(help.toString())
+      break
     default:
-      console.log('Unknown command. Try --help')
+      console.log(`Unknown command. Try ${chalk.green("'npm run help'")}`)
   }
 }
 

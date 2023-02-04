@@ -2,11 +2,13 @@
   "scripts": {
     "moduleTest": "node src/app.js module example",
     "componentTest": "node src/app.js component example header main",
-    "importTest": "node src/app.js import example header main"
+    "importTest": "node src/app.js import example header main",
+    "help": "node src/app.js help"
   },
   "name": "ts_module_generator",
   "packageManager": "yarn@3.2.4",
   "dependencies": {
-    "chalk": "4.1.2"
+    "chalk": "4.1.2",
+    "cli-table": "^0.3.11"
   }
 }

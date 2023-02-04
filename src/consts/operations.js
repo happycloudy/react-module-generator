@@ -1,7 +1,8 @@
 const operations = [
   'module',
   'component',
-  'import'
+  'import',
+  'help'
 ]
 
 module.exports = operations
